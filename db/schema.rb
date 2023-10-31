@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_31_092953) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_31_093051) do
   create_table "bookings", force: :cascade do |t|
     t.integer "service_id", null: false
     t.integer "tasker_id", null: false
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_092953) do
     t.index ["service_id"], name: "index_bookings_on_service_id"
     t.index ["task_id"], name: "index_bookings_on_task_id"
     t.index ["tasker_id"], name: "index_bookings_on_tasker_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -93,6 +103,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_092953) do
   add_foreign_key "bookings", "services"
   add_foreign_key "bookings", "taskers"
   add_foreign_key "bookings", "tasks"
+  add_foreign_key "messages", "users", column: "sender_id"
+  add_foreign_key "messages", "users", column: "recipient_id"
   add_foreign_key "reviews", "users"
   add_foreign_key "tasker_comments", "taskers"
   add_foreign_key "tasker_comments", "users"
