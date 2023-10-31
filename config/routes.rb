@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :taskers
   resources :services
   # Devise Gem
   devise_for :users
