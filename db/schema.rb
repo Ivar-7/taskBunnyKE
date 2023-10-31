@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_31_092813) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_31_092914) do
+  create_table "bookings", force: :cascade do |t|
+    t.integer "service_id", null: false
+    t.integer "tasker_id", null: false
+    t.integer "task_id", null: false
+    t.string "schedule"
+    t.string "location"
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_bookings_on_service_id"
+    t.index ["task_id"], name: "index_bookings_on_task_id"
+    t.index ["tasker_id"], name: "index_bookings_on_tasker_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -67,6 +81,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_092813) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "services"
+  add_foreign_key "bookings", "taskers"
+  add_foreign_key "bookings", "tasks"
   add_foreign_key "tasker_comments", "taskers"
   add_foreign_key "tasker_comments", "users"
   add_foreign_key "taskers", "users"
