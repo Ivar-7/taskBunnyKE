@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service: one
+  tasker: one
+  task: one
+  schedule: MyString
+  location: MyString
+  accepted: false
+
+two:
+  service: two
+  tasker: two
+  task: two
+  schedule: MyString
+  location: MyString
+  accepted: false

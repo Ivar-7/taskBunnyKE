@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tasker_comment %>
+
+<div>
+  <%= link_to "Edit this tasker comment", edit_tasker_comment_path(@tasker_comment) %> |
+  <%= link_to "Back to tasker comments", tasker_comments_path %>
+
+  <%= button_to "Destroy this tasker comment", @tasker_comment, method: :delete %>
+</div>
