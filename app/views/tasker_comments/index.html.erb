@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tasker comments</h1>
+
+<div id="tasker_comments">
+  <% @tasker_comments.each do |tasker_comment| %>
+    <%= render tasker_comment %>
+    <p>
+      <%= link_to "Show this tasker comment", tasker_comment %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tasker comment", new_tasker_comment_path %>

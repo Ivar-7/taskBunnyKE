@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_31_092510) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_31_092647) do
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tasker_comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tasker_id", null: false
+    t.string "comment"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tasker_id"], name: "index_tasker_comments_on_tasker_id"
+    t.index ["user_id"], name: "index_tasker_comments_on_user_id"
   end
 
   create_table "taskers", force: :cascade do |t|
@@ -47,5 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_092510) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tasker_comments", "taskers"
+  add_foreign_key "tasker_comments", "users"
   add_foreign_key "taskers", "users"
 end
