@@ -1,37 +1,43 @@
-<%= form_with(model: tasker_comment) do |form| %>
-  <% if tasker_comment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(tasker_comment.errors.count, "error") %> prohibited this tasker_comment from being saved:</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= form_with(model: tasker_comment, local: true, class: "form") do |form| %>
+        <% if tasker_comment.errors.any? %>
+          <div class="alert alert-danger">
+            <h2><%= pluralize(tasker_comment.errors.count, "error") %> prohibited this tasker comment from being saved:</h2>
 
-      <ul>
-        <% tasker_comment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <ul>
+              <% tasker_comment.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group">
+          <%= form.label :user_id %>
+          <%= form.text_field :user_id, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :tasker_id %>
+          <%= form.text_field :tasker_id, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :comment %>
+          <%= form.text_field :comment, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :rating %>
+          <%= form.number_field :rating, class: "form-control" %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit "Save", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
   </div>
-
-  <div>
-    <%= form.label :tasker_id, style: "display: block" %>
-    <%= form.text_field :tasker_id %>
-  </div>
-
-  <div>
-    <%= form.label :comment, style: "display: block" %>
-    <%= form.text_field :comment %>
-  </div>
-
-  <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

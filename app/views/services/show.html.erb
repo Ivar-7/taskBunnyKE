@@ -1,10 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
 
-<%= render @service %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= render @service %>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Edit this service", edit_service_path(@service) %> |
-  <%= link_to "Back to services", services_path %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="text-center mt-4">
+        <%= link_to "Edit this service", edit_service_path(@service), class: "btn btn-info" %> |
+        <%= link_to "Back to services", services_path, class: "btn btn-secondary" %>
 
-  <%= button_to "Destroy this service", @service, method: :delete %>
+        <%= button_to "Destroy this service", @service, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
 </div>

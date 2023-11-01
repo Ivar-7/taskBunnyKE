@@ -1,9 +1,19 @@
-<h1>New service</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="display-4">New service</h1>
+    </div>
+  </div>
 
-<%= render "form", service: @service %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= render "form", service: @service %>
+    </div>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Back to services", services_path %>
+  <div class="row">
+    <div class="col-12 text-center mt-4">
+      <%= link_to "Back to services", services_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
 </div>

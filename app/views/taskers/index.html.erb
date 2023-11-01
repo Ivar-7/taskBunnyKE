@@ -1,14 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
 
-<h1>Taskers</h1>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="display-4">Taskers</h1>
+    </div>
+  </div>
 
-<div id="taskers">
-  <% @taskers.each do |tasker| %>
-    <%= render tasker %>
-    <p>
-      <%= link_to "Show this tasker", tasker %>
-    </p>
-  <% end %>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div id="taskers">
+        <% @taskers.each do |tasker| %>
+          <div class="card mb-4">
+            <%= render tasker %>
+            <div class="card-body">
+              <p class="card-text">
+                <%= link_to "Show this tasker", tasker, class: "btn btn-primary" %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center mt-4">
+      <%= link_to "New tasker", new_tasker_path, class: "btn btn-success" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New tasker", new_tasker_path %>

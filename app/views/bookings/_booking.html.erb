@@ -1,32 +1,16 @@
-<div id="<%= dom_id booking %>">
-  <p>
-    <strong>Service:</strong>
-    <%= booking.service_id %>
-  </p>
-
-  <p>
-    <strong>Tasker:</strong>
-    <%= booking.tasker_id %>
-  </p>
-
-  <p>
-    <strong>Task:</strong>
-    <%= booking.task_id %>
-  </p>
-
-  <p>
-    <strong>Schedule:</strong>
-    <%= booking.schedule %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= booking.location %>
-  </p>
-
-  <p>
-    <strong>Accepted:</strong>
-    <%= booking.accepted %>
-  </p>
-
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div id="<%= dom_id(booking) %>" class="card">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Service:</strong> <%= booking.service_id %></h5>
+          <p class="card-text"><strong>Tasker:</strong> <%= booking.tasker_id %></p>
+          <p class="card-text"><strong>Task:</strong> <%= booking.task_id %></p>
+          <p class="card-text"><strong>Schedule:</strong> <%= booking.schedule %></p>
+          <p class="card-text"><strong>Location:</strong> <%= booking.location %></p>
+          <p class="card-text"><strong>Accepted:</strong> <%= booking.accepted %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
