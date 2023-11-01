@@ -14,13 +14,14 @@
   <body>
     <%= render 'home/navbar' %>
     <div class="container"> 
-      <br/>
       <% if notice %>
+        <p></p>
         <%= render 'layouts/alerts' %>
       <% end %>
-      <br />
-        
-      <%= yield %>
     </div>
+      <p> </p>
+      <%= yield %>
+      <p> </p>
+    <%= render 'home/footer'%>
   </body>
 </html>

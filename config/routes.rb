@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Root
-  root "home#home"
+  root "home#index"
 
   # Not found
   match '*path', to: 'home#not_found', via: :all

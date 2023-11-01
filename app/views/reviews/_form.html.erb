@@ -1,32 +1,38 @@
-<%= form_with(model: review) do |form| %>
-  <% if review.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= form_with(model: review, local: true, class: "form") do |form| %>
+        <% if review.errors.any? %>
+          <div class="alert alert-danger">
+            <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-      <ul>
-        <% review.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <ul>
+              <% review.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group">
+          <%= form.label :user_id %>
+          <%= form.text_field :user_id, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :rating %>
+          <%= form.number_field :rating, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :comment %>
+          <%= form.text_area :comment, class: "form-control" %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit "Save", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
   </div>
-
-  <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
-  </div>
-
-  <div>
-    <%= form.label :comment, style: "display: block" %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

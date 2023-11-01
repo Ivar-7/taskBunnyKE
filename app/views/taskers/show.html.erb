@@ -1,10 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
 
-<%= render @tasker %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= render @tasker %>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Edit this tasker", edit_tasker_path(@tasker) %> |
-  <%= link_to "Back to taskers", taskers_path %>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="text-center mt-4">
+        <%= link_to "Edit this tasker", edit_tasker_path(@tasker), class: "btn btn-info" %> |
+        <%= link_to "Back to taskers", taskers_path, class: "btn btn-secondary" %>
 
-  <%= button_to "Destroy this tasker", @tasker, method: :delete %>
+        <%= button_to "Destroy this tasker", @tasker, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
 </div>
