@@ -2,32 +2,35 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Task Bunny<span>.</span></a></h1>
+      <%# <h1 class="logo"><a href="#">Task Bunny<span>.</span></a></h1> %>
+      <h1 class="logo"><a href="#"><%= link_to 'TaskBunny', root_path %> </a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><%= link_to 'Services', services_path, class:"nav-link scrollto active" %></li>
+          <li><%= link_to 'Taskers', taskers_path, class:"nav-link scrollto" %></li>
+          <li><%= link_to 'Booking', bookings_path, class:"nav-link scrollto" %></li>
+          <li><%= link_to 'Reviews', reviews_path, class:"nav-link scrollto" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class:"nav-link scrollto" %></li>
+          <% else %>
+            <li><%= link_to 'Sign up', new_user_registration_path, class:"nav-link" %></li>
+            <li><%= link_to 'Sign in', new_user_session_path, class:"nav-link" %></li>
+          <% end %>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
+              <li><%= link_to 'Tasker Comments', tasker_comments_path %></li>
+              <li><%= link_to 'Tasks', tasks_path %></li>
+              <li><%= link_to 'Messages', messages_path %></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
                   <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
