@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div id="<%= dom_id(tasker_comment) %>" class="card">
+        <div class="card-body">
+          <h5 class="card-title"><strong>User:</strong> <%= tasker_comment.user_id %></h5>
+          <p class="card-text"><strong>Tasker:</strong> <%= tasker_comment.tasker_id %></p>
+          <p class="card-text"><strong>Comment:</strong> <%= tasker_comment.comment %></p>
+          <p class="card-text"><strong>Rating:</strong> <%= tasker_comment.rating %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

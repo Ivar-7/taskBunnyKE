@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="display-4">Messages</h1>
+    </div>
+  </div>
+
+  <div id="messages">
+  <% @messages.each do |message| %>
+    <div class="col-3 message-wrapper" data-message-id="<%= message.id %>">
+      <%= render message %>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center mt-4">
+      <%= link_to "New message", new_message_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.message-wrapper').forEach(function (wrapper) {
+      wrapper.addEventListener('click', function () {
+        var messageId = this.getAttribute('data-message-id');
+        window.location.href = '/messages/' + messageId;
+      });
+    });
+  });
+</script>

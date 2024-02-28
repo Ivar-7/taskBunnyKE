@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= form_with(model: booking, local: true, class: "form") do |form| %>
+        <% if booking.errors.any? %>
+          <div class="alert alert-danger">
+            <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+            <ul>
+              <% booking.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :service_id %>
+          <%= form.collection_select :service_id, Service.all, :id, :name, { selected: params[:service_id], prompt: "Select a service" }, { class: "form-control", id: "service_select" } %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :tasker_id %>
+          <%= form.collection_select :tasker_id, Tasker.all, :id, :name, { selected: params[:tasker_id], prompt: "Select a tasker" }, { class: "form-control", id: "tasker_select" } %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_area :description, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :schedule %>
+          <%= form.datetime_field :schedule, class: "form-control" %>
+        </div>
+
+        <div class="form-group mb-2">
+          <%= form.label :location %>
+          <%= form.text_field :location, class: "form-control" %>
+        </div>
+
+        <div class="form-group hidden">
+          <%= form.label :accepted %>
+          <%= form.check_box :accepted, class: "form-check-input" %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit "Save", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('#service_select').change(function() {
+    var serviceId = $(this).val();
+
+    $.ajax({
+      url: '/get_taskers',
+      method: 'GET',
+      data: { service_id: serviceId },
+      success: function(data) {
+        // console.log(data);
+        var taskerSelect = $('#tasker_select');
+        taskerSelect.empty();
+
+        $.each(data, function(index, tasker) {
+          taskerSelect.append($('<option></option>').attr('value', tasker.id).text(tasker.name));
+        });
+      }
+    });
+  });
+});
+</script>

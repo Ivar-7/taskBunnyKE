@@ -1,0 +1,40 @@
+<!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <%# <h1 class="logo"><a href="#">Task Bunny<span>.</span></a></h1> %>
+     <h1 class="logo">
+      <a href="#"><%= link_to raw('TaskBunny <i class="bi bi-arrow-up-short"></i>'), root_path, class: "text-decoration-none" %></a>
+      </h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><%= link_to 'Services', services_path, class:"nav-link" %></li>
+          <li><%= link_to 'Taskers', taskers_path, class:"nav-link" %></li>
+          <li><%= link_to 'Booking', bookings_path, class:"nav-link" %></li>
+          <li class="dropdown"><a href="#"><span>...</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><%= link_to 'Reviews', reviews_path, class:"nav-link" %></li>
+              <li><%= link_to 'Tasker Comments', tasker_comments_path, class:"nav-link" %></li>
+              <%# <li><%= link_to 'Messages', messages_path, class:"nav-link" "%"></li>
+              <li class="dropdown"><a href="#"><span>More</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                </ul>
+              </li> %>
+            </ul>
+          </li>
+          <% if user_signed_in? %>
+            <li><%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-dark" %></li>
+          <% else %>
+            <li><%= link_to 'Sign up', new_user_registration_path, class: "nav-link text-primary" %></li>
+            <li><%= link_to 'Sign in', new_user_session_path, class: "nav-link text-primary" %></li>
+          <% end %>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->

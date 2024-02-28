@@ -1,0 +1,9 @@
+<div id="<%= dom_id(service) %>" class="container my-4">
+  <div class="card text-center">
+    <%= image_tag(service.picture , class: "card-img-top service-image-size", alt: "Service Image") %>
+    <div class="card-body">
+      <h5 class="card-title"><%= service.name %></h5>
+      <p class="card-text"><%= service.description %></p>
+    </div>
+  </div>
+</div>

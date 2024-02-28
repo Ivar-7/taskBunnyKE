@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="display-4">Tasker comments</h1>
+    </div>
+  </div>
+
+  <div id="tasker_comments">
+  <% @tasker_comments.each do |tasker_comment| %>
+    <div class="tasker-comment-wrapper" data-tasker-comment-id="<%= tasker_comment.id %>">
+      <%= render tasker_comment %>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center mt-4">
+      <%= link_to "New tasker comment", new_tasker_comment_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.tasker-comment-wrapper').forEach(function (wrapper) {
+      wrapper.addEventListener('click', function () {
+        var taskerCommentId = this.getAttribute('data-tasker-comment-id');
+        window.location.href = '/tasker_comments/' + taskerCommentId;
+      });
+    });
+  });
+</script>

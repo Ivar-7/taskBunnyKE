@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <%= link_to services_path, class: "btn btn-dark mb-2" do %>
+        <i class="bi bi-arrow-left"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= render @service %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="text-center mt-4">
+        <% if user_signed_in? && current_user.email == "cookie@me.con" %>
+          <div class="row">
+            <div class="col">
+              <%= link_to "Edit this service", edit_service_path(@service), class: "btn btn-info mb-2" %>
+            </div>
+            <div class="col">
+              <%= button_to "Destroy this service", @service, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            </div>
+          </div>
+        <% end %> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card my-4 shadow-sm">
+  <div class="card-body">
+    <h2 class="text-center"> Taskers </h2>
+  </div>
+</div>
+
+<div class="container my-4">
+  <div class="row">
+    <% @service.taskers.each do |tasker| %>
+      <div class="col-md-4">
+        <div id="<%= dom_id(tasker) %>" class="card text-center">
+          <img class="card-img-top tasker-image-size" src="<%= tasker.profile_picture %>" alt="Profile picture">
+          <div class="card-body">
+            <p class="card-text"><strong>Name:</strong> <%= tasker.name %></p>
+            <p class="card-text"><strong>Location:</strong> <%= tasker.location %></p>
+            <p class="card-text"><strong>Description:</strong> <%= tasker.description %></p>
+            <p class="card-text"><strong>Phone number:</strong> <%= tasker.phone_number %></p>
+            <p class="card-text"><strong>Rating:</strong> <%= tasker.rating %></p>
+          </div>
+          <div class="card-footer">
+            <%= link_to "View profile", tasker_path(tasker), class: "btn btn-primary mx-2" %>
+            <%= link_to "Book", new_booking_path(service_id: @service.id, tasker_id: tasker.id), class: "btn btn-primary mx-2" %>
+          </div>  
+        </div>
+      </div>
+      <% if (@service.taskers.index(tasker) + 1) % 3 == 0 %>
+        </div><div class="row">
+      <% end %>
+    <% end %>
+  </div>
+</div>

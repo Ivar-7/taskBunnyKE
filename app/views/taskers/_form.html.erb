@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= form_with(model: tasker, local: true, class: "form") do |form| %>
+        <% if tasker.errors.any? %>
+          <div class="alert alert-danger">
+            <h2><%= pluralize(tasker.errors.count, "error") %> prohibited this tasker from being saved:</h2>
+
+            <ul>
+              <% tasker.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :location %>
+          <%= form.text_field :location, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :profile_picture %>
+          <%= form.text_field :profile_picture, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_area :description, class: "form-control large-text-area" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :services %>
+          <% Service.all.each do |service| %>
+            <div class="form-check">
+              <%= form.check_box :service_ids, { multiple: true, id: "service_#{service.id}", class: 'form-check-input' }, service.id, nil %>
+              <%= form.label "service_#{service.id}", service.name, class: 'form-check-label' %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :phone_number %>
+          <%= form.number_field :phone_number, class: "form-control" %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= form.label :rating %>
+          <%= form.number_field :rating, class: "form-control" %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit "Save", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

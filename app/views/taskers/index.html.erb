@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="display-4">Taskers</h1>
+    </div>
+  </div>
+
+  <% if user_signed_in? && current_user.email == "cookie@me.con" %>
+    <div class="row">
+      <div class="col-12 text-center mt-4">
+        <%= link_to "New tasker", new_tasker_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <% @taskers.each do |tasker| %>
+      <div class="col-4 tasker-wrapper" data-tasker-id="<%= tasker.id %>">
+        <%= render tasker %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.tasker-wrapper').forEach(function (wrapper) {
+      wrapper.addEventListener('click', function () {
+        var taskerId = this.getAttribute('data-tasker-id');
+        window.location.href = '/taskers/' + taskerId;
+      });
+    });
+  });
+</script>

@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= render @review %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="text-center mt-4">
+        <%= link_to "Edit this review", edit_review_path(@review), class: "btn btn-info" %> |
+        <%= link_to "Back to reviews", reviews_path, class: "btn btn-secondary" %>
+
+        <%= button_to "Destroy this review", @review, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

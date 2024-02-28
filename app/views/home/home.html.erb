@@ -1,0 +1,55 @@
+<!-- app/views/pages/parallax.html.erb -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Effect</title>
+  <style>
+    .parallax {
+      height: 100vh;
+      background-image: url('background-image.jpg');
+      background-size: cover;
+      background-attachment: fixed; /* This is important for the parallax effect */
+      position: relative;
+    }
+
+    .parallax-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .content {
+      height: 1000px; /* Just for demonstration */
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax" style="transform: translateY(0);">
+    <div class="parallax-inner">
+      <h1>Welcome to My Website</h1>
+      <p>This is some sample content.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Main Content</h2>
+    <p>This is the main content of the page...</p>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      let scrollTop = window.scrollY;
+      let parallax = document.querySelector('.parallax');
+      parallax.style.transform = 'translateY(' + scrollTop * 0.5 + 'px)';
+    });
+  </script>
+</body>
+</html>

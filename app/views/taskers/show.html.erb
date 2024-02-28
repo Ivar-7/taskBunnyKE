@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <%= link_to taskers_path, class: "btn btn-dark mb-2" do %>
+        <i class="bi bi-arrow-left"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <p style="color: green"><%= notice %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= render @tasker %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="text-center mt-4 d-flex justify-content-center">
+        <% if user_signed_in? && (@tasker.user_id == current_user.id || current_user.email == "cookie@me.con") %>
+          <%= link_to "Edit this tasker", edit_tasker_path(@tasker), class: "btn btn-info mx-2" %>
+          <%= button_to "Destroy this tasker", @tasker, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger mx-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
