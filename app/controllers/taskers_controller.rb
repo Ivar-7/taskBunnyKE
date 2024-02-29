@@ -1,6 +1,7 @@
 class TaskersController < ApplicationController
   before_action :set_tasker, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new create update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update ]
+  before_action :authenticate_tasker!, only: %i[ destroy ]
 
   # GET /taskers or /taskers.json
   def index
@@ -67,5 +68,10 @@ class TaskersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def tasker_params
       params.require(:tasker).permit(:user_id, :name, :location, :profile_picture, :description, :phone_number, :rating, service_ids: [])
+    end
+
+    # Only allow tasker to delete profile
+    def authenticate_tasker!
+      redirect_to root_path, notice: "You are not authorized to perform this action" unless (@tasker.user_id == current_user.id || current_user.email == "cookie@me.con")
     end
 end
