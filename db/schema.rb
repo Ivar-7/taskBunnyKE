@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_02_28_100344) do
   create_table "bookings", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.integer "service_id", null: false
     t.integer "tasker_id", null: false
     t.string "description"
@@ -22,6 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_28_100344) do
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_bookings_on_service_id"
     t.index ["tasker_id"], name: "index_bookings_on_tasker_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -96,6 +98,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_28_100344) do
 
   add_foreign_key "bookings", "services"
   add_foreign_key "bookings", "taskers"
+  add_foreign_key "bookings", "users"
   add_foreign_key "messages", "users", column: "recipient_id"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "reviews", "users"
