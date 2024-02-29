@@ -1,5 +1,6 @@
 class TaskersController < ApplicationController
   before_action :set_tasker, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create update destroy ]
 
   # GET /taskers or /taskers.json
   def index
