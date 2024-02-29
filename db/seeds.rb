@@ -16,7 +16,7 @@ end
 puts "Services seeded!"
 
 # Seed User
-puts "Seeding user"
+puts "Seeding user..."
 User.create!(email: Faker::Internet.email, password: Faker::Internet.password(min_length: 8))
 puts "User seeded!"
 
@@ -33,7 +33,7 @@ profile_picture_urls = [
 
 puts "Seeding taskers..."
 profile_picture_urls.each_with_index do |url, index|
-  Tasker.create!(
+  tasker = Tasker.create!(
     user_id: "1",
     name: Faker::Name.unique.name,
     location: Faker::Address.unique.city,
@@ -42,5 +42,8 @@ profile_picture_urls.each_with_index do |url, index|
     phone_number: "07#{Faker::Number.unique.number(digits: 8)}",
     rating: Faker::Number.between(from: 1, to: 5)
   )
+  # Associate tasker with random services
+  random_services = Service.all.sample(rand(1..3))
+  tasker.services << random_services
 end
 puts "Taskers seeded!"

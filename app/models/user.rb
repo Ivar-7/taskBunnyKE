@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :taskers
   has_many :messages
-  has_many :bookings, through: :taskers
+  has_many :bookings
   has_many :tasker_comments, through: :taskers
 
   # Validations

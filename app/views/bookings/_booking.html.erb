@@ -1,12 +1,15 @@
 <div class="container my-4">
   <div id="<%= dom_id(booking) %>" class="card text-center">
-    <div class="card-body">
-      <h5 class="card-title"><strong>Service:</strong> <%= booking.service.name %></h5>
-      <p class="card-text"><strong>Tasker:</strong> <%= booking.tasker.name %></p>
-      <p class="card-text"><strong>Description:</strong> <%= booking.description %></p>
-      <p class="card-text"><strong>Schedule:</strong> <%= booking.schedule %></p>
-      <p class="card-text"><strong>Location:</strong> <%= booking.location %></p>
-      <p class="card-text"><strong>Accepted:</strong> <%= booking.accepted %></p>
-    </div>
+      <div class="card-body">
+        <h5 class="card-title"><strong>Service:</strong> <%= booking.service.name %></h5>
+        <p class="card-text"><strong>Tasker:</strong> <%= booking.tasker.name %></p>
+        <p class="card-text"><strong>Tasker number:</strong> <%= booking.tasker.phone_number %></p>
+        <p class="card-text"><strong>Description:</strong> <%= booking.description %></p>
+        <p class="card-text"><strong>Schedule:</strong> <%= booking.schedule %></p>
+        <p class="card-text"><strong>Location:</strong> <%= booking.location %></p>
+        <%# <p class="card-text"><strong>Accepted:</strong> <%= booking.accepted "%"></p> %>
+      </div>
   </div>
 </div>
+
+
