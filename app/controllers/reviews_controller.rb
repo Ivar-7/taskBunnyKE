@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update ]
+  before_action :authenticate_admin!, only: %i[ destroy ]
 
   # GET /reviews or /reviews.json
   def index

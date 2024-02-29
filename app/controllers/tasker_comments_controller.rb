@@ -1,5 +1,7 @@
 class TaskerCommentsController < ApplicationController
   before_action :set_tasker_comment, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create ]
+  before_action :authenticate_admin!, only: %i[ edit update destroy ]
 
   # GET /tasker_comments or /tasker_comments.json
   def index
