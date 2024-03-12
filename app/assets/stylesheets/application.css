@@ -129,6 +129,25 @@ body {
   }
   
   /*--------------------------------------------------------------
+  # Navbar
+  --------------------------------------------------------------*/
+.logo {
+    font-size: 30px;
+    color: #111;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    font-family: "Poppins", sans-serif;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 550;
+    font-style: italic;
+    transition: 0.3s;
+    color: #444444;
+    font-family: "Poppins", sans-serif;
+}
+  /*--------------------------------------------------------------
   # Hero Section
   --------------------------------------------------------------*/
   #hero {
