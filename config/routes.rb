@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   get '/get_taskers', to: 'services#get_taskers'
 
   # Not found
-  match '*path', to: 'home#not_found', via: :all
+  match '*path', to: 'home#not_found', via: :all, constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   get "up" => "rails/health#show", as: :rails_health_check
