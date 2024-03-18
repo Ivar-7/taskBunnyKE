@@ -32,6 +32,10 @@
           <%= form.label :profile_picture %>
           <%= form.text_field :profile_picture, class: "form-control" %>
         </div>
+        <div> Or </div>
+        <div class="field">
+          <%= form.file_field :image, class: "form-control" %>
+        </div>
 
         <div class="form-group">
           <%= form.label :description %>
@@ -54,8 +58,9 @@
         </div>
 
         <div class="form-group mb-3">
-          <%= form.label :rating %>
-          <%= form.number_field :rating, class: "form-control" %>
+          <%# <%= form.label :rating %>
+          <%# <%= form.number_field :rating, class: "form-control" %>
+          <%= form.hidden_field :rating, class: "form-control" %>
         </div>
 
         <div class="text-center">
