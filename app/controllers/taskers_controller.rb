@@ -67,7 +67,12 @@ class TaskersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tasker_params
-      params.require(:tasker).permit(:user_id, :name, :location, :profile_picture, :description, :phone_number, :rating, service_ids: [])
+      params.require(:tasker).permit(:user_id, :name, :location, :profile_picture, :description, :phone_number, :rating, :image, service_ids: [])
+    end
+
+    # Only allow tasker to delete profile
+    def authenticate_tasker!
+      redirect_to root_path, notice: "You are not authorized to perform this action" unless (@tasker.user_id == current_user.id || current_user.email == "cookie@me.con")
     end
 
     # Only allow tasker to delete profile
