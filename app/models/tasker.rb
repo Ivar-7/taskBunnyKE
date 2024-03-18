@@ -8,4 +8,7 @@ class Tasker < ApplicationRecord
 
   # Active storage image
   has_one_attached :image
+
+  # Validations
+  validates :phone_number, length: { is: 9 }, numericality: { only_integer: true }
 end
