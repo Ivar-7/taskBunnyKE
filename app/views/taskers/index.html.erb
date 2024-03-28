@@ -4,13 +4,11 @@
       <p style="color: green"><%= notice %></p>
     </div>
   </div>
-
   <div class="row">
     <div class="col-12 text-center">
       <h1 class="display-4">Taskers</h1>
     </div>
   </div>
-
   <% if user_signed_in? %>
     <div class="row">
       <div class="col-12 text-center mt-4">
@@ -18,16 +16,14 @@
       </div>
     </div>
   <% end %>
-
   <div class="row">
     <% @taskers.each do |tasker| %>
-      <div class="col-4 tasker-wrapper" data-tasker-id="<%= tasker.id %>">
+      <div class="col-12 col-md-6 col-lg-4 tasker-wrapper" data-tasker-id="<%= tasker.id %>">
         <%= render tasker %>
       </div>
     <% end %>
   </div>
 </div>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.tasker-wrapper').forEach(function (wrapper) {

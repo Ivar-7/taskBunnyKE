@@ -4,7 +4,6 @@
       <h1 class="display-4">Services</h1>
     </div>
   </div>
-
   <% if user_signed_in? && current_user.email == "cookie@me.con" %>
     <div class="row">
       <div class="col-12 text-center mt-4">
@@ -12,16 +11,14 @@
       </div>
     </div>
   <% end %>
-
   <div class="row">
     <% @services.each do |service| %>
-      <div class="col-4 service-wrapper" data-service-id="<%= service.id %>">
+      <div class="col-12 col-md-6 col-lg-4 service-wrapper" data-service-id="<%= service.id %>">
         <%= render service %>
       </div>
     <% end %>
   </div>
 </div>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.service-wrapper').forEach(function (wrapper) {
@@ -32,4 +29,3 @@
     });
   });
 </script>
-
