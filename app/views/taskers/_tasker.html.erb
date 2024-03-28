@@ -9,7 +9,8 @@
           <p class="card-text"><strong>Name:</strong> <%= tasker.name %></p>
           <p class="card-text"><strong>Location:</strong> <%= tasker.location %></p>
           <p class="card-text"><strong>Description:</strong> <%= tasker.description %></p>
-          <p class="card-text"><strong>Phone number:</strong> <%= tasker.phone_number %></p>
+          <%# <p class="card-text"><strong>Phone number:</strong> <%= tasker.phone_number ></p> %>
+          <p class="card-text"><strong>Phone number:</strong> <%= number_to_phone(tasker.phone_number, area_code: true) %></p>
           <p class="card-text"><strong>Rating:</strong> <%= tasker.rating %></p>
         </div>
       </div>
