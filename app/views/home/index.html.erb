@@ -342,7 +342,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Kristina Pimenovna</h4>
+                <h4>Kristina Pimbi</h4>
                 <span>Product Manager</span>
               </div>
             </div>
@@ -378,7 +378,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Hayley Leblanc</h4>
+                <h4>Hayley La Blanc</h4>
                 <span>Accountant</span>
               </div>
             </div>
@@ -464,6 +464,49 @@
       </div>
     </section><!-- End Frequently Asked Questions Section -->
 
+    <!-- ======= Cookies consent ======= -->
+    <div id="cookie-popup" class="cookie-popup">
+      <p>We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.</p>
+      <button id="accept-cookies" class="btn btn-primary">Accept</button>
+    </div>
+
+    <script>
+      window.onload = function() {
+        var popup = document.getElementById('cookie-popup');
+        var acceptButton = document.getElementById('accept-cookies');
+
+        if (!getCookie('acceptCookies')) {
+          popup.style.display = 'block';
+        }
+
+        acceptButton.onclick = function() {
+          setCookie('acceptCookies', true, 365);
+          popup.style.display = 'none';
+        }
+      }
+
+      function setCookie(name, value, days) {
+        var expires = '';
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = '; expires=' + date.toUTCString();
+        }
+        document.cookie = name + '=' + (value || '')  + expires + '; path=/';
+      }
+
+      function getCookie(name) {
+        var nameEQ = name + '=';
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+      }
+    </script>
+
     <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -488,11 +531,11 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>TaskBunnyKE<span>.</span></h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@taskbunny.com<br>
+              K108 Umoja Street <br>
+              Umoja Street, US 34332<br>
+              Nairobi Kenya <br><br>
+              <strong>Phone:</strong> +254 712 345 678<br>
+              <strong>Email:</strong> info@taskbunny.ltd<br>
             </p>
           </div>
 
@@ -501,9 +544,9 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/privacy_policy">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/privacy_policy">Privacy policy</a></li>
             </ul>
           </div>
 
