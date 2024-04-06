@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   # Get taskers json
   get '/get_taskers', to: 'services#get_taskers'
 
+  # Privacy policy
+  get 'privacy_policy', to: 'home#privacy_policy'
+
   # Not found
   match '*path', to: 'home#not_found', via: :all, constraints: lambda { |req|
     req.path.exclude? 'rails/active_storage'
