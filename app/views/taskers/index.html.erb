@@ -19,7 +19,7 @@
   <div class="row">
     <% @taskers.each do |tasker| %>
       <div class="col-12 col-md-6 col-lg-4 tasker-wrapper" data-tasker-id="<%= tasker.id %>">
-        <%= render tasker %>
+        <%= render tasker, truncate_description: true %>
       </div>
     <% end %>
   </div>
