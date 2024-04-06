@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   # Not found
   match '*path', to: 'home#not_found', via: :all, constraints: lambda { |req|
-    req.path.exclude? 'rails/active_storage'
+    req.path.exclude?('rails/active_storage') && req.path.exclude?('ads.txt')
   }
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
