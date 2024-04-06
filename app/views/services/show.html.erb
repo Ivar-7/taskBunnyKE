@@ -14,7 +14,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 offset-3">
+    <div class="col-12 col-md-6 col-lg-4 show-page">
       <%= render @service %>
     </div>
   </div>
@@ -52,9 +52,9 @@
           <div class="card-body">
             <p class="card-text"><strong>Name:</strong> <%= tasker.name %></p>
             <p class="card-text"><strong>Location:</strong> <%= tasker.location %></p>
-            <p class="card-text"><strong>Description:</strong> <%= tasker.description %></p>
+            <p class="card-text"><strong>Description:</strong> <%= truncate(tasker.description, length: 100, separator: ' ') %></p>
             <p class="card-text"><strong>Phone number:</strong> <%= tasker.phone_number %></p>
-            <p class="card-text"><strong>Rating:</strong> <%= tasker.rating %></p>
+            <%# <p class="card-text"><strong>Rating:</strong> <%= tasker.rating ></p> %>
           </div>
           <div class="card-footer">
             <%= link_to "View profile", tasker_path(tasker), class: "btn btn-primary mx-2" %>
