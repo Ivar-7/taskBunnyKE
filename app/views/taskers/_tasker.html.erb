@@ -8,10 +8,16 @@
         <div class="card-body">
           <p class="card-text"><strong>Name:</strong> <%= tasker.name %></p>
           <p class="card-text"><strong>Location:</strong> <%= tasker.location %></p>
-          <p class="card-text"><strong>Description:</strong> <%= tasker.description %></p>
-          <%# <p class="card-text"><strong>Phone number:</strong> <%= tasker.phone_number ></p> %>
+          <p class="card-text">
+            <strong>Description:</strong>
+            <% if local_assigns[:truncate_description] %>
+              <%= truncate(tasker.description, length: 100, separator: ' ') %>
+            <% else %>
+              <%= tasker.description %>
+            <% end %>
+          </p>
           <p class="card-text"><strong>Phone number:</strong> <%= number_to_phone(tasker.phone_number, area_code: true) %></p>
-          <p class="card-text"><strong>Rating:</strong> <%= tasker.rating %></p>
+          <%# <p class="card-text"><strong>Rating:</strong> <%= tasker.rating ></p> %>
         </div>
       </div>
 </div>

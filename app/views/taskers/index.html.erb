@@ -12,14 +12,14 @@
   <% if user_signed_in? %>
     <div class="row">
       <div class="col-12 text-center mt-4">
-        <%= link_to "New tasker", new_tasker_path, class: "btn btn-success" %>
+        <%= link_to "Register as tasker", new_tasker_path, class: "btn btn-success" %>
       </div>
     </div>
   <% end %>
   <div class="row">
     <% @taskers.each do |tasker| %>
       <div class="col-12 col-md-6 col-lg-4 tasker-wrapper" data-tasker-id="<%= tasker.id %>">
-        <%= render tasker %>
+        <%= render tasker, truncate_description: true %>
       </div>
     <% end %>
   </div>
