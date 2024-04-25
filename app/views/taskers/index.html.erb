@@ -9,13 +9,17 @@
       <h1 class="display-4">Taskers</h1>
     </div>
   </div>
-  <% if user_signed_in? %>
-    <div class="row">
-      <div class="col-12 text-center mt-4">
+  <div class="row justify-content-end">
+    <% if user_signed_in? %>
+      <div class="col-auto text-right mt-4">
         <%= link_to "Register as tasker", new_tasker_path, class: "btn btn-success" %>
       </div>
-    </div>
-  <% end %>
+    <% else %>
+      <div class="col-auto text-right mt-4">
+        <%= link_to 'Register as tasker', new_user_session_path, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
   <div class="row">
     <% @taskers.each do |tasker| %>
       <div class="col-12 col-md-6 col-lg-4 tasker-wrapper" data-tasker-id="<%= tasker.id %>">
