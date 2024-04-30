@@ -48,7 +48,11 @@
     <% @service.taskers.each do |tasker| %>
       <div class="col-md-4">
         <div id="<%= dom_id(tasker) %>" class="card text-center">
-          <img class="card-img-top tasker-image-size" src="<%= tasker.profile_picture %>" alt="Profile picture">
+          <% if tasker.image.attached? %>
+            <%= image_tag(tasker.image, class: "card-img-top tasker-image-size") %>
+          <% else %>
+            <img class="card-img-top tasker-image-size" src="<%= tasker.profile_picture %>" alt="Profile picture">
+          <% end %>
           <div class="card-body">
             <p class="card-text"><strong>Name:</strong> <%= tasker.name %></p>
             <p class="card-text"><strong>Location:</strong> <%= tasker.location %></p>
