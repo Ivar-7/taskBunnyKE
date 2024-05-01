@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   # Privacy policy
   get 'privacy_policy', to: 'home#privacy_policy'
 
+  # Force HTTPS redirection
+  config.force_ssl = true
+
+  # Redirect specific routes to HTTPS
+  get '/ads.txt', to: redirect(protocol: "https://", status: 301)
+
   # Not found
   match '*path', to: 'home#not_found', via: :all, constraints: lambda { |req|
     req.path.exclude?('rails/active_storage')
